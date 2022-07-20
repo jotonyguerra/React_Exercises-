@@ -13,7 +13,7 @@
   <div id="root"></div>
 
   <script type="text/babel">
-    function Header(props){
+    function Header(props) {
       console.log(props);
       return (
         <header>
@@ -22,11 +22,13 @@
       );
     }
     function Main(props) {
-      return(
+      return (
         <section>
-          <p>
-            We serve the most {props.adjective} food around
-          </p>
+         <ul>
+          {dishes.map(dish => (
+            <li>{dish}</li>
+            ))}
+        </ul>
         </section>
       );
     }
@@ -35,16 +37,27 @@
       return (
         <footer>
           <p>Copyright {props.year}</p>
-          </footer>
+        </footer>
       )
     }
+
+    const dishes = [
+      "Bean Soup",
+      "Mac & Cheese",
+      "Texas Toast",
+      "Spaghetti"
+    ];
+
+
+
     function App() {
       return (
         <div>
-          <Header name="Jotony"/>
-          <Main adjective="Amazing"/>
-          <Footer year={new Date().getFullYear()}/>
-          </div>
+          <Header name="Jotony" />
+          <Main adjective="Amazing" 
+          dishes={dishes} />
+          <Footer year={new Date().getFullYear()} />
+        </div>
 
       );
     }
