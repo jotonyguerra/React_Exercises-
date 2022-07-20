@@ -1,15 +1,24 @@
 import './App.css';
+import { useState, useEffect } from 'react';
 
-const [firstCity, secondCity, ThridCity] = ["Tokyo", "Las Vegas", "New York"];
+//const [firstCity, secondCity, ThridCity] = ["Tokyo", "Las Vegas", "New York"];
 
-console.log(firstCity);
-console.log(secondCity);
-console.log(ThridCity);
+function App() {
+  const [emotion, setEmotion] = useState("happy");
 
-function App({library}) {
+  useEffect(() => {
+    console.log(`It's ${emotion} right now`);
+  }, [emotion]);
+
   return (
     <div className="App">
-      <h1>Hello From {library}</h1>
+      <h1>Current Emotion is {emotion}</h1>
+      <button onClick={() => setEmotion("Sad")}>
+        Sad
+      </button>
+      <button onClick={() => setEmotion("Angry")}>
+        Angry
+      </button>
     </div>
   );
 }
