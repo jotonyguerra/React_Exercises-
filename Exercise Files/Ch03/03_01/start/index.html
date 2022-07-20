@@ -13,6 +13,7 @@
   <div id="root"></div>
 
   <script type="text/babel">
+
     function Header(props) {
       console.log(props);
       return (
@@ -21,14 +22,15 @@
         </header>
       );
     }
+
     function Main(props) {
       return (
         <section>
-         <ul>
-          {dishes.map(dish => (
-            <li>{dish}</li>
+          <ul>
+            {props.dishes.map((dish) => (
+              <li key={dish.id}>{dish.title}</li>
             ))}
-        </ul>
+          </ul>
         </section>
       );
     }
@@ -48,14 +50,18 @@
       "Spaghetti"
     ];
 
-
-
+    const dishObjects = dishes.map(
+      (dish, i) => ({
+        id: i,
+        title: dish
+      })
+    );
     function App() {
       return (
         <div>
           <Header name="Jotony" />
-          <Main adjective="Amazing" 
-          dishes={dishes} />
+          <Main adjective="Amazing"
+            dishes={dishObjects} />
           <Footer year={new Date().getFullYear()} />
         </div>
 
